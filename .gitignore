@@ -1,6 +1,17 @@
-/testPackage_efloti.egg-info/
+# pycharm
+/.idea/
+
+# outil de packaging
 /dist/
 /build/
-/algo_efloti.egg-info/
-/.idea/
 /plc_nsi_algo.egg-info/
+
+# pytest
+.pytest_cache
+
+# python
+__pycache__
+
+# notebooks
+.ipynb_checkpoints
+*.ipynb
