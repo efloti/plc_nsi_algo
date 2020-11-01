@@ -106,3 +106,14 @@ def test_iteration_avec_for():
         #
         assert v == i
         i += 1
+
+def test_setitem():
+    l = Liste()
+    for _ in range(5):
+        l.inserer_queue(0)
+    l[2] = 10 
+    assert l[2] == 10 and str(l) == "0 → 0 → 10 → 0 → 0"
+    with pytest.raises(IndexError):
+        assert l[-1]
+        assert l[20]
+        assert l["truc"]
