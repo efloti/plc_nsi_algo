@@ -111,6 +111,16 @@ class Liste:
             courante = courante.suivante
         return courante.valeur
 
+    def __setitem__(self, index, valeur):
+        if not (0 <= index < len(self)):
+            raise IndexError("index en dehors de la plage admissible.")
+        i = 0
+        courante = self.tete
+        while i < index:
+            i += 1
+            courante = courante.suivante
+        courante.valeur = valeur
+
     def inserer_tete(self, valeur):
         self._inserer_apres(valeur)
 
@@ -119,3 +129,4 @@ class Liste:
 
     def supprimer_tete(self):
         return self._supprimer_apres()
+
