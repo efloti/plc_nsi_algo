@@ -56,7 +56,7 @@ class Liste:
                 self._queue = cell
             return
 
-        # insertion queue
+        # insertion en queue
         if cellule._suivante is None:
             cellule._suivante = cell
             self._queue = cell
