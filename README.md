@@ -4,7 +4,7 @@ Travail collaboratif des élèves de terminale NSI au lycée Paul-Louis Courier 
 
 ## Présentation 
 
-L'objectif est de développer, en *travail collaboratif*, un **paquet** python regroupant toutes les structures algorithmiques et tous les algorithmes du programme de première/terminale NSI sous la forme de paquets/modules.
+L'objectif est de développer, par un *travail collaboratif*, un **paquet** python regroupant toutes les structures algorithmiques et tous les algorithmes du programme de première/terminale NSI sous la forme de paquets/modules.
 
 Celui-ci doit pouvoir s'installer «simplement» dans l'environnement de l'utilisateur via:
 
@@ -15,7 +15,7 @@ Une fois le paquet installé, on peut importer le **package** algo ainsi que ses
     import algo # ou encore
     from algo.struct.liste_simple import Liste
 
-Pour le désinstaller:
+Pour le désinstaller («nécessaire» pendant le développement - car il risque d'entrer en conflit avec les sources):
 
     pip uninstall plc_nsi_algo
 
@@ -30,7 +30,7 @@ Outre **git** et **github** pour la collaboration,
 
 3. (à venir) un outil de **documentation** automatique - sous la forme d'un site web - comme [sphinx](https://www.sphinx-doc.org/en/master/).
 
-Bien sûr, il est encore utile de disposer d'un **outil d'édition** - comme [**Pycharm**](https://www.jetbrains.com/pycharm/) - qui intègre simplement les outils précédents. Comme le code ne dépend d'aucune interface graphique, il peut même être facilement réalisé (et tester) dans une interface du type **Jupyterlab**.
+Bien sûr, il est encore utile de disposer d'un **outil d'édition** - comme [**Pycharm**](https://www.jetbrains.com/pycharm/) - qui intègre simplement les outils précédents. Comme le code ne dépend d'aucune interface graphique, il peut même être facilement réalisé (et testé) dans une interface du type **Jupyterlab**.
 
 ## Organisation
 
@@ -41,6 +41,8 @@ L'enseignant produit une interface minimale pour chaque structure et/ou algorith
 Chaque élève a réalisé un fork du dépôt dans son espace personnel. Il l'a ensuite cloné dans son espace de travail qu'il a configuré correctement de façon: 
 - à pouvoir synchroniser sa branche *master* locale avec celle de ce dépôt (principal)
 - à pouvoir pousser sa branche *contrib* sur son fork (nommé origin).
+
+> Voir [cette vidéo sous windows 10 pour configurer son environnement de travail](https://vimeo.com/480681990) avec **pycharm** (et quelques indications pour visual studio).
 
 Les élèves implémentent, sur cette base, les fonctions ou méthodes, les tests correspondants; ils produisent aussi les docstring et/ou commentaires appropriés.
 
@@ -56,8 +58,8 @@ Pour contribuer, ils poussent leur commit sur leur fork (de ce dépôt) puis env
 
 2. Régler votre environnement:
 
-   - **Pycharm**: intègre tout automatiquement,
-   - **Jupyterhub**: On définit la variable d'environnement PYTHONPATH qui permet de préciser le chemin de recherche d'un paquet/module. Malheureusement, il faut le faire à chaque fois qu'on ouvre un terminal (mais voir note plus bas pour Jupyterhub):
+   - **Pycharm**(conseillé): intègre presque tout automatiquement - [voir tout de même cette vidéo pour windows](https://vimeo.com/480681990).
+   - **Jupyterhub**: On définit la variable d'environnement **PYTHONPATH** qui permet de préciser le chemin de recherche d'un paquet/module. Malheureusement, il faut le faire à chaque fois qu'on ouvre un terminal (mais voir note plus bas pour Jupyterhub):
     
         ```
         $ export PYTHONPATH=<chemin_absolu_du_depot_git_local>
@@ -68,7 +70,7 @@ Pour contribuer, ils poussent leur commit sur leur fork (de ce dépôt) puis env
         ```
    - **Visual Studio**: pas évident (mais la solution du jupyterhub fonctionne)
 
-3. Si vous implémenter la fonction/méthode `<truc>` dans le module `algo.<mod>`, ajouter une fonction `test_<truc>` dans le fichier `tests/test_<mod>.py`. Ne pas oublier d'importer la fonction `truc` ou la classe qui contient cette méthode si c'en est une.
+3. Si vous implémentez la fonction/méthode `<truc>` dans le module `algo.<mod>`, ajoutez une fonction `test_<truc>` dans le fichier `tests/test_<mod>.py`. Ne pas oublier d'importer la fonction `truc` ou la classe qui contient cette méthode si c'en est une.
 
    Pour des exemples, voir `tests/test_liste_simple.py`.
 
@@ -77,7 +79,7 @@ Pour contribuer, ils poussent leur commit sur leur fork (de ce dépôt) puis env
     - **pycharm**: se fait par simple clic,
     - **jupyterhub** et **visual-studio**: utiliser la commande pytest dans un terminal.
     
-**Note pour jupyterhub**: Pour éviter de reconfigurer à chaque fois `PYTHONPATH`, il est possible d'ajouter les deux lignes qui suivent à la toute fin du fichier `~/.bashrc` (chargé de configurer le terminal lorsqu'il démarre):
+**Note complémentaire pour jupyterhub ou pour git-bash sous windows**: Pour éviter de reconfigurer à chaque fois `PYTHONPATH`, il est possible d'ajouter les deux lignes qui suivent à la toute fin du fichier `~/.bashrc` (chargé de configurer le terminal lorsqu'il démarre):
 
     # Pour pytest avec plc_nsi_algo
     export PYTHONPATH=~/<chemin_vers_plc_nsi_alog_a_adapter>
