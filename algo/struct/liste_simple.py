@@ -130,3 +130,13 @@ class Liste:
     def supprimer_tete(self):
         return self._supprimer_apres()
 
+    def __eq__(self, autre):
+        """ implémente l'opérateur == qui doit renvoyer
+        TRUE si et seulement si, les cellules des deux listes
+        contiennent les mêmes valeurs au même position"""
+        pass
+
+    def __delitem__(self, i):
+        """ si l est une Liste, del l[i] doit supprimer la cellule
+        dont l'index est i"""
+        pass

@@ -1,11 +1,9 @@
-from algo.struct.liste_simple import Liste
-
 class File1:
     """ File implémentée sur la base d'une liste chainée simple"""
+    from algo.struct.liste_simple import Liste
 
     def __init__(self):
-        self._liste = Liste()
-        self._taille = 0
+        pass
 
     def __len__(self):
         pass
@@ -21,16 +19,49 @@ class File1:
     def __str__(self):
         pass
 
-from collections import deque
 
 class File2:
     """ File implémentée sur la base d'une deque (file double) python """
+    from collections import deque
 
+    def __init__(self):
+        pass
 
-from algo.struct.piles import Pile1 as Pile
+    def __len__(self):
+        pass
+
+    def enfiler(self, valeur):
+        """ à faire """
+        pass
+
+    def defiler(self):
+        """ à faire """
+        pass
+
+    def __str__(self):
+        pass
+
 
 class File3:
-    """ File implémentée sur la base de deux piles"""
+    """ File implémentée sur la base de deux piles."""
+    from algo.struct.piles import Pile1 as Pile
+
+    def __init__(self):
+        pass
+
+    def __len__(self):
+        pass
+
+    def enfiler(self, valeur):
+        """ à faire """
+        pass
+
+    def defiler(self):
+        """ à faire """
+        pass
+
+    def __str__(self):
+        pass
 
 
 class File4:
@@ -41,4 +72,3 @@ class File4:
 
     def __init__(self, taille=1024):
         pass
-

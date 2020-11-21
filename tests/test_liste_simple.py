@@ -117,3 +117,11 @@ def test_setitem():
         assert l[-1]
         assert l[20]
         assert l["truc"]
+
+def test_eq():
+    # test si l'opérateur == fonctionne correctement sur une liste chaînée simple
+    pass
+
+def test_delitem():
+    # test de l'opération «del l[i]» où l est une liste.
+    pass
