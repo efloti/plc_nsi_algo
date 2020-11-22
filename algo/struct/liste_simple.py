@@ -136,8 +136,13 @@ class Liste:
         contiennent les mêmes valeurs au même position"""
         if self._taille != len(autre): return False
 
-        for i in range(self._taille):
-            if self[i] != autre[i]: return False
+        courante = self.tete
+        couranteAutre = autre.tete
+
+        for _ in range(self._taille):
+            if courante.valeur != couranteAutre.valeur: return False
+            courante = courante.suivante
+            couranteAutre = couranteAutre.suivante
 
         return True
 

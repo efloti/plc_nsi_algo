@@ -125,9 +125,9 @@ def test_eq():
     for i in range(5):
         l.inserer_queue(i)
         l2.inserer_queue(i)
-    assert 1 == l2
+    assert l == l2
     l2[0] = 56
-    assert (l == l2) == False
+    assert l != l2
     
 
 def test_delitem():
