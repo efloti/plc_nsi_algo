@@ -21,7 +21,7 @@ class Liste:
         """Crée une liste chaînée vide"""
         self._tete = None
         self._queue = None
-        self._taille = 0
+        self._taille = 1
 
     @property
     def tete(self):
