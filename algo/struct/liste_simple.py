@@ -161,4 +161,4 @@ class Liste:
         for j in range(i - 1):
             courante = courante.suivante
         
-        courante._suivante = courante.suivante.suivante # Déréférence la cellule à supprimer et référence la suivante
+        self._supprimer_apres(courante)
