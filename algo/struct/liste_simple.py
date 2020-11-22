@@ -134,9 +134,26 @@ class Liste:
         """ implémente l'opérateur == qui doit renvoyer
         TRUE si et seulement si, les cellules des deux listes
         contiennent les mêmes valeurs au même position"""
-        pass
+        if self._taille != len(autre): return False
+
+        for i in range(self._taille):
+            if self[i] != autre[i]: return False
+
+        return True
 
     def __delitem__(self, i):
         """ si l est une Liste, del l[i] doit supprimer la cellule
         dont l'index est i"""
-        pass
+        if not (0 <= i < len(self)):
+            raise IndexError("index en dehors de la plage admissible.")
+
+        if i == 0:
+            self.supprimer_tete()
+            return
+
+        courante = self.tete
+
+        for j in range(i - 1):
+            courante = courante.suivante
+        
+        courante._suivante = courante.suivante.suivante # Déréférence la cellule à supprimer et référence la suivante
