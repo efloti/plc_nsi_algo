@@ -120,8 +120,24 @@ def test_setitem():
 
 def test_eq():
     # test si l'opérateur == fonctionne correctement sur une liste chaînée simple
-    pass
+    l = Liste()
+    l2 = Liste()
+    for i in range(5):
+        l.inserer_queue(i)
+        l2.inserer_queue(i)
+    assert l == l2
+    l2[0] = 56
+    assert l != l2
+    
 
 def test_delitem():
     # test de l'opération «del l[i]» où l est une liste.
-    pass
+    l = Liste()
+    for i in range(5):
+        l.inserer_queue(i)
+    del l[0]
+    assert str(l) == "1 → 2 → 3 → 4" and l.tete.valeur == 1 and l.queue.valeur == 4
+    del l[3]
+    assert str(l) == "1 → 2 → 3" and l.tete.valeur == 1 and l.queue.valeur == 3
+    for _ in range(3): del l[0]
+    assert str(l) == "None" and l.tete is l.queue
