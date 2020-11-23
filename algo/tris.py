@@ -9,5 +9,7 @@ def tri_insertion(tab):
 def tri_bulle(tab):
     pass
 
+
+
 def tri_fusion(tab):
     pass
