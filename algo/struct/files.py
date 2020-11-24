@@ -107,16 +107,14 @@ class File4:
 
     def __str__(self):
         chaine = ""
-        for i in range(self.__longueur - 1):
-            chaine += f"{self.__tableau[(self.__entree + i) % len(self.__tableau)]} -> "
-        chaine += str(self.__tableau[self.__sortie])
+        if self.__entree <= self.__sortie:
+            for i in range(self.__entree, self.__sortie):
+                chaine += f"{self.__tableau[self.__entree + i]} -> "
+                chaine += str(self.__tableau[self.__sortie])
+        else:
+            for i in range(self.__entree, len(self.__tableau)):
+                chaine += f"{self.__tableau[self.__entree + i]} -> "
+            for i in range(self.__sortie):
+                chaine += f"{self.__tableau[i]} -> "
+            chaine += str(self.__tableau[self.__sortie])
         return chaine
-
-
-f = File4(2)
-f.enfiler(1)
-f.enfiler(2)
-print(f)
-f.defiler()
-f.enfiler(3)
-print(f)
