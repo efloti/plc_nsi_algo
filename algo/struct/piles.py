@@ -26,21 +26,32 @@ class Pile2:
     """ Pile implémentée sur la base d'une list python ordinaire. """
 
     def __init__(self):
-        pass
+        self.__liste = []
 
     def __len__(self):
-        pass
+        return len(self.__liste)
+
+    def sommet(self):
+        return self.__liste[-1]
 
     def empiler(self, valeur):
-        """ à faire """
-        pass
+        """ Ajoute la valeur à la fin de la liste """
+        self.__liste.append(valeur)
 
     def depiler(self):
-        """ à faire """
-        pass
+        """ Si la liste est vide on envoie une erreur,
+         sinon on enlève la dernière valeur de la liste"""
+        if len(self.__liste) == 0:
+            raise IndexError("Pile vide !")
+        return self.__liste.pop()
 
     def __str__(self):
-        pass
+        if len(self.__liste) == 0 :
+            return "Pile vide !"
+        ch = ""
+        for v in self.__liste:
+            ch += f"{v},"
+        return ch[:-1]
 
 
 class Pile3:
