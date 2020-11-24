@@ -94,6 +94,8 @@ class File4:
     def defiler(self):
         if self.est_vide():
             raise IndexError("On ne peut pas enlever une valeur à une file vide")
+        if self.__est_pleine:
+            self.__est_pleine = False
         self.__sortie += 1
         if self.__sortie >= len(self.__tableau):
             self.__sortie = 0
@@ -106,6 +108,15 @@ class File4:
     def __str__(self):
         chaine = ""
         for i in range(self.__longueur - 1):
-            chaine += f"{self.__tableau[self.__entree + i]} -> "
+            chaine += f"{self.__tableau[(self.__entree + i) % len(self.__tableau)]} -> "
         chaine += str(self.__tableau[self.__sortie])
         return chaine
+
+
+f = File4(2)
+f.enfiler(1)
+f.enfiler(2)
+print(f)
+f.defiler()
+f.enfiler(3)
+print(f)
