@@ -107,14 +107,15 @@ class File4:
 
     def __str__(self):
         chaine = ""
-        if self.__entree <= self.__sortie:
-            for i in range(self.__entree, self.__sortie):
-                chaine += f"{self.__tableau[self.__entree + i]} -> "
-                chaine += str(self.__tableau[self.__sortie])
+        if self.__sortie < self.__entree:
+            for i in range(self.__sortie, self.__entree - 1):
+                chaine += f"{self.__tableau[self.__sortie + i]} -> "
+            chaine += str(self.__tableau[self.__entree - 1])
         else:
-            for i in range(self.__entree, len(self.__tableau)):
-                chaine += f"{self.__tableau[self.__entree + i]} -> "
-            for i in range(self.__sortie):
-                chaine += f"{self.__tableau[i]} -> "
-            chaine += str(self.__tableau[self.__sortie])
+            if not self.est_vide():
+                for i in range(self.__sortie, len(self.__tableau)):
+                    chaine += f"{self.__tableau[i]} -> "
+                for i in range(self.__entree - 1):
+                    chaine += f"{self.__tableau[i]} -> "
+                chaine += str(self.__tableau[self.__entree - 1])
         return chaine
