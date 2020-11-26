@@ -71,4 +71,51 @@ class File4:
     """
 
     def __init__(self, taille=1024):
-        pass
+        self.__tableau = [None]*taille
+        self.__entree = 0
+        self.__sortie = 0
+        self.__est_pleine = False
+        self.__longueur = 0
+
+    def est_vide(self):
+        return self.__longueur == 0
+
+    def enfiler(self, valeur):
+        if self.__est_pleine:
+            raise IndexError("On ne peut pas ajouter de valeur à une file pleine")
+        self.__tableau[self.__entree] = valeur
+        self.__entree += 1
+        if self.__entree >= len(self.__tableau):
+            self.__entree = 0
+        if self.__entree == self.__sortie:
+            self.__est_pleine = True
+        self.__longueur += 1
+
+    def defiler(self):
+        if self.est_vide():
+            raise IndexError("On ne peut pas enlever une valeur à une file vide")
+        if self.__est_pleine:
+            self.__est_pleine = False
+        self.__sortie += 1
+        if self.__sortie >= len(self.__tableau):
+            self.__sortie = 0
+        self.__longueur -= 1
+        return self.__tableau[self.__sortie - 1]
+
+    def __len__(self):
+        return self.__longueur
+
+    def __str__(self):
+        chaine = ""
+        if self.__sortie < self.__entree:
+            for i in range(self.__sortie, self.__entree - 1):
+                chaine += f"{self.__tableau[self.__sortie + i]} -> "
+            chaine += str(self.__tableau[self.__entree - 1])
+        else:
+            if not self.est_vide():
+                for i in range(self.__sortie, len(self.__tableau)):
+                    chaine += f"{self.__tableau[i]} -> "
+                for i in range(self.__entree - 1):
+                    chaine += f"{self.__tableau[i]} -> "
+                chaine += str(self.__tableau[self.__entree - 1])
+        return chaine
