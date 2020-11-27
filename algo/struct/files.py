@@ -25,21 +25,31 @@ class File2:
     from collections import deque
 
     def __init__(self):
-        pass
+        self.__file = deque()
 
     def __len__(self):
-        pass
+        return count(self.__file)
 
     def enfiler(self, valeur):
         """ à faire """
-        pass
+        self.__file.appendleft(valeur)
 
     def defiler(self):
         """ à faire """
-        pass
+        self.__file.pop()
 
     def __str__(self):
-        pass
+        chaine = ""
+        file = list(self.__file)
+        longueur_file = len(file)
+        if len(file) == 0:
+            return None
+        for index in range(longueur_file):
+            if index == longueur_file:
+                chaine += str(file[index])
+            else:
+                chaine += f'{file[index]} -> '
+        return chaine
 
 
 class File3:
