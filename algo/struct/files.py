@@ -5,27 +5,37 @@ class File1:
 
     def __init__(self):
         """Création d'une file vide."""
-        self.file = Liste()
+        self._liste = Liste()
 
     def __len__(self):
         """Renvoie la longueur de la file."""
-        return len(self.file)
+        return len(self._liste)
 
     def enfiler(self, valeur):
-        """Enfile un objet à la fin de la file."""
-        self.file.inserer_queue(valeur)
+        """Enfile un objet au début de la file."""
+        self._liste.inserer_queue(valeur)
 
     def defiler(self):
         """Retire le premier objet de la file."""
-        self.file.supprimer_tete()
+        if len(self._liste) == 0:
+            raise IndexError("File vide !")
+        else:
+            self._liste.supprimer_tete()
 
     def __str__(self):
         """Convertis la file en une chaîne de caractères."""
-        return self.file.__str__()
+        chaine = ""
+        longueur_file = len(self._liste)
+        for i in reversed(range(longueur_file)):
+            if i == 0:
+                chaine += f"{self._liste[i]}"
+            else:
+                chaine += f"{self._liste[i]} → "
+        return chaine
 
     def __getitem__(self, index):
         """Renvoie l'objet demandé par rapport à son index."""
-        return self.file.__getitem__(index)
+        return self._liste.__getitem__(index)
 
 class File2:
     """ File implémentée sur la base d'une deque (file double) python """
