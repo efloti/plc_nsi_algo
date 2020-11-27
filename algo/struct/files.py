@@ -92,6 +92,8 @@ class File3:
         return result
 
     def __str__(self):
+        if len(self._sortie) == 0:
+            return str(self._entree)
         for _ in range(len(self._sortie)):
             self._entree.empiler(self._sortie.depiler())
         return str(self._entree)

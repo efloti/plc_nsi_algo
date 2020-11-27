@@ -8,7 +8,7 @@ liste_fonctions = [tri_selection, tri_insertion, tri_bulle, tri_fusion]
 def grandes_listes():
     import random
     aleatoire = [random.randint(1, 2000) for _ in range(5000)]
-    tri_fait = grande_liste.copy()
+    tri_fait = aleatoire.copy()
     tri_fait.sort()
     return aleatoire, tri_fait
 
