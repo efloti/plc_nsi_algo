@@ -113,7 +113,7 @@ class Liste:
 
     def __setitem__(self, index, valeur):
         if not (0 <= index < len(self)):
-            raise IndexError("index en dehors de la plage admissible.")
+            raise IndexError("Index en dehors de la plage admissible.")
         i = 0
         courante = self.tete
         while i < index:
