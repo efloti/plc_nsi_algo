@@ -1,0 +1,16 @@
+Index: algo/struct/liste_simple.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- algo/struct/liste_simple.py	(revision 145865929494a7c227410908b02a4e4f305b2b80)
++++ algo/struct/liste_simple.py	(revision 7fdfe069cbc39907dce626ce23c6380fabf1cb58)
+@@ -21,7 +21,7 @@
+         """Crée une liste chaînée vide"""
+         self._tete = None
+         self._queue = None
+-        self._taille = 0
++        self._taille = 1
+ 
+     @property
+     def tete(self):

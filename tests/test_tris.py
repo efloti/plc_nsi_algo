@@ -1,6 +1,5 @@
-import pytest
-import time
 from algo.tris import tri_selection, tri_insertion, tri_bulle, tri_fusion
+
 
 liste_fonctions = [tri_bulle, tri_fusion] # tri_selection, tri_insertion
 
@@ -32,3 +31,4 @@ def test_tous_tris_basile(tab, attendu):
         liste_fonctions[i](test_tab)
         print("\n"+str(time.time()-t1))
         assert test_tab == attendu
+
