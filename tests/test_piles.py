@@ -1,13 +1,10 @@
 from algo.struct.piles import Pile1, Pile2, Pile3
 
-def test_len():
+def test_pile1():
     assert False # à remplacer...
 
-def test_empiler():
+def test_pile2():
     assert False
 
-def test_depiler():
-    assert False
-
-def test_str():
+def test_pile3():
     assert False
