@@ -3,6 +3,7 @@ import pytest
 from algo.struct.files import File1, File2, File3, File4
 import pytest
 
+
 def test_len_file3():
     file = File3()
     assert len(file) == 0
@@ -82,6 +83,7 @@ def test_len():
     file1 = File1()
     assert len(file1) == 0
 
+
 def test_enfiler():
     file = File1()
     file.enfiler(1)
@@ -89,6 +91,7 @@ def test_enfiler():
     assert len(file) == 2
     assert file[0] == 1
     assert file[1] == 2
+
 
 def test_defiler():
     file = File1()
@@ -98,11 +101,13 @@ def test_defiler():
     assert len(file) == 1
     assert file[0] == 2
 
+
 def test_str():
     file = File1()
     file.enfiler(1)
     file.enfiler(2)
     assert str(file) == '1 → 2'
+
 
 def test_file_quatre():
     f = File4(5)

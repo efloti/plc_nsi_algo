@@ -1,5 +1,6 @@
 from algo.struct.liste_simple import Liste
 
+
 class File1:
     """ File implémentée sur la base d'une liste chainée simple"""
 
@@ -26,6 +27,7 @@ class File1:
     def __getitem__(self, index):
         """Renvoie l'objet demandé par rapport à son index."""
         return self.file.__getitem__(index)
+
 
 class File2:
     """ File implémentée sur la base d'une deque (file double) python """

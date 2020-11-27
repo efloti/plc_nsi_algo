@@ -2,20 +2,11 @@
 
 
 def tri_selection(tab):
-    for i in range(0, len(tab)-1):
-        k = i
-        for j in range(i+1, len(tab)):
-            if tab[j] < tab[k]:
-                k = j
-        tab[k], tab[i] = tab[i], tab[k]
+    pass
 
 
 def tri_insertion(tab):
-    for i in range(1, len(tab)):
-        j = i
-        while j > 0 and tab[j-1] > tab[j]:
-            tab[j-1], tab[j] = tab[j], tab[j-1]
-            j = j - 1
+    pass
 
 
 def tri_bulle(tab):
@@ -23,6 +14,7 @@ def tri_bulle(tab):
         for j in range(len(tab) - 1, i, -1):
             if tab[j-1] > tab[j]:
                 tab[j - 1], tab[j] = tab[j], tab[j - 1]
+
 
 def tri_fusion(tab):
     new = tri_fusion_separation(tab)
