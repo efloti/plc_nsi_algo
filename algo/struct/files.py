@@ -9,7 +9,7 @@ class File1:
 
     def __len__(self):
         """Renvoie la longueur de la file."""
-        return len(self.___liste)
+        return len(self.__liste)
 
     def enfiler(self, valeur):
         """Enfile un objet au début de la file."""
