@@ -2,7 +2,7 @@ import pytest
 import time
 from algo.tris import tri_selection, tri_insertion, tri_bulle, tri_fusion
 
-liste_fonctions = [tri_selection, tri_insertion, tri_bulle, tri_fusion]
+liste_fonctions = [tri_bulle, tri_fusion] # tri_selection, tri_insertion
 
 
 def grandes_listes():
