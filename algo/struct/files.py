@@ -1,23 +1,32 @@
+from algo.struct.liste_simple import Liste
+
+
 class File1:
     """ File implémentée sur la base d'une liste chainée simple"""
-    from algo.struct.liste_simple import Liste
 
     def __init__(self):
-        pass
+        """Création d'une file vide."""
+        self.file = Liste()
 
     def __len__(self):
-        pass
+        """Renvoie la longueur de la file."""
+        return len(self.file)
 
     def enfiler(self, valeur):
-        """ à faire """
-        pass
+        """Enfile un objet à la fin de la file."""
+        self.file.inserer_queue(valeur)
 
     def defiler(self):
-        """ à faire """
-        pass
+        """Retire le premier objet de la file."""
+        self.file.supprimer_tete()
 
     def __str__(self):
-        pass
+        """Convertis la file en une chaîne de caractères."""
+        return self.file.__str__()
+
+    def __getitem__(self, index):
+        """Renvoie l'objet demandé par rapport à son index."""
+        return self.file.__getitem__(index)
 
 
 class File2:
@@ -44,24 +53,51 @@ class File2:
 
 class File3:
     """ File implémentée sur la base de deux piles."""
-    from algo.struct.piles import Pile1 as Pile
 
     def __init__(self):
-        pass
+        from algo.struct.piles import Pile1 as Pile
+        self._entree = Pile()
+        self._sortie = Pile()
 
     def __len__(self):
-        pass
+        return len(self._entree) + len(self._sortie)
 
     def enfiler(self, valeur):
         """ à faire """
-        pass
+        self._entree.empiler(valeur)
 
     def defiler(self):
         """ à faire """
-        pass
+        if len(self) == 0:
+            raise IndexError("File vide")
+        
+        if len(self._sortie):
+            return self._sortie.depiler()
+
+        long = len(self._entree)
+
+        if long == 1:
+            return self._entree.depiler()
+        
+        for _ in range(long-1):
+            self._sortie.empiler(self._entree.depiler())
+
+        return self._entree.depiler()
+
+    def copy(self):
+        for _ in range(len(self._sortie)):
+            self._entree.empiler(self._sortie.depiler())
+        result = File3()
+        result._entree = self._entree
+        return result
 
     def __str__(self):
-        pass
+        for _ in range(len(self._sortie)):
+            self._entree.empiler(self._sortie.depiler())
+        return str(self._entree)
+
+    def __eq__(self, other):
+        return str(self) == str(other)
 
 
 class File4:
@@ -71,4 +107,51 @@ class File4:
     """
 
     def __init__(self, taille=1024):
-        pass
+        self.__tableau = [None]*taille
+        self.__entree = 0
+        self.__sortie = 0
+        self.__est_pleine = False
+        self.__longueur = 0
+
+    def est_vide(self):
+        return self.__longueur == 0
+
+    def enfiler(self, valeur):
+        if self.__est_pleine:
+            raise IndexError("On ne peut pas ajouter de valeur à une file pleine")
+        self.__tableau[self.__entree] = valeur
+        self.__entree += 1
+        if self.__entree >= len(self.__tableau):
+            self.__entree = 0
+        if self.__entree == self.__sortie:
+            self.__est_pleine = True
+        self.__longueur += 1
+
+    def defiler(self):
+        if self.est_vide():
+            raise IndexError("On ne peut pas enlever une valeur à une file vide")
+        if self.__est_pleine:
+            self.__est_pleine = False
+        self.__sortie += 1
+        if self.__sortie >= len(self.__tableau):
+            self.__sortie = 0
+        self.__longueur -= 1
+        return self.__tableau[self.__sortie - 1]
+
+    def __len__(self):
+        return self.__longueur
+
+    def __str__(self):
+        chaine = ""
+        if self.__sortie < self.__entree:
+            for i in range(self.__sortie, self.__entree - 1):
+                chaine += f"{self.__tableau[self.__sortie + i]} -> "
+            chaine += str(self.__tableau[self.__entree - 1])
+        else:
+            if not self.est_vide():
+                for i in range(self.__sortie, len(self.__tableau)):
+                    chaine += f"{self.__tableau[i]} -> "
+                for i in range(self.__entree - 1):
+                    chaine += f"{self.__tableau[i]} -> "
+                chaine += str(self.__tableau[self.__entree - 1])
+        return chaine

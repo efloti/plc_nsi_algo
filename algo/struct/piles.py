@@ -5,21 +5,23 @@ class Pile1:
     """ Pile implémentée sur la base d'une liste chainée simple"""
 
     def __init__(self):
-        pass
+        self.__liste = Liste()
 
     def __len__(self):
-        pass
+        return len(self.__liste)
 
     def empiler(self, valeur):
         """ à faire """
-        pass
+        self.__liste._inserer_apres(valeur)
 
     def depiler(self):
         """ à faire """
-        pass
+        if len(self.__liste) == 0:
+            raise IndexError("Pile vide!")
+        return self.__liste._supprimer_apres()
 
     def __str__(self):
-        pass
+        return str(self.__liste)
 
 
 class Pile2:
