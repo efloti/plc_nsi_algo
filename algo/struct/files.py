@@ -44,24 +44,51 @@ class File2:
 
 class File3:
     """ File implémentée sur la base de deux piles."""
-    from algo.struct.piles import Pile1 as Pile
 
     def __init__(self):
-        pass
+        from algo.struct.piles import Pile1 as Pile
+        self._entree = Pile()
+        self._sortie = Pile()
 
     def __len__(self):
-        pass
+        return len(self._entree) + len(self._sortie)
 
     def enfiler(self, valeur):
         """ à faire """
-        pass
+        self._entree.empiler(valeur)
 
     def defiler(self):
         """ à faire """
-        pass
+        if len(self) == 0:
+            raise IndexError("File vide")
+        
+        if len(self._sortie):
+            return self._sortie.depiler()
+
+        long = len(self._entree)
+
+        if long == 1:
+            return self._entree.depiler()
+        
+        for _ in range(long-1):
+            self._sortie.empiler(self._entree.depiler())
+
+        return self._entree.depiler()
+
+    def copy(self):
+        for _ in range(len(self._sortie)):
+            self._entree.empiler(self._sortie.depiler())
+        result = File3()
+        result._entree = self._entree
+        return result
 
     def __str__(self):
-        pass
+        for _ in range(len(self._sortie)):
+            self._entree.empiler(self._sortie.depiler())
+        return str(self._entree)
+
+    def __eq__(self, other):
+        return str(self) == str(other)
 
 
 class File4:
