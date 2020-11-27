@@ -50,34 +50,37 @@ class Pile3:
     """
 
     def __init__(self, taille=2**10):
-        self.liste = taille*[]
-        self.taille = 0
+        self._liste = taille*[None]
+        self._taille = 0
         pass
 
     def __len__(self):
-        return self.taille
+        return self._taille
         pass
 
     def empiler(self, valeur):
-        self.liste[self.taille] = valeur
-        self.taille += 1
+        if self._taille == 2**10:
+            return "Pile remplie!"
+        self._liste[self._taille] = valeur
+        self._taille += 1
         pass
 
     def depiler(self):
-        if self.taille == 0:
-            return "liste vide"
-        r = self.liste[self.taille - 1]
-        self.liste[self.taille - 1] = []
+        if self._taille == 0:
+            return "Pile vide!"
+        r = self._liste[self._taille - 1]
+        self._liste[self._taille - 1] = []
+        self._taille -= 1
         return r
         pass
 
     def __str__(self):
-        if self.taille == 0:
+        if self._taille == 0:
             return "Pile vide!"
         ch = ""
-        i = self.taille
+        i = self._taille
         while i > 0:
-            ch += f"{self.liste[i]}\n"
+            ch += f"{self._liste[i]}\n"
             i -= 1
         return ch[:-1]
         pass
