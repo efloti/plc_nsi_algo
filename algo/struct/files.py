@@ -1,24 +1,31 @@
+from algo.struct.liste_simple import Liste
+
 class File1:
     """ File implémentée sur la base d'une liste chainée simple"""
-    from algo.struct.liste_simple import Liste
 
     def __init__(self):
-        pass
+        """Création d'une file vide."""
+        self.file = Liste()
 
     def __len__(self):
-        pass
+        """Renvoie la longueur de la file."""
+        return len(self.file)
 
     def enfiler(self, valeur):
-        """ à faire """
-        pass
+        """Enfile un objet à la fin de la file."""
+        self.file.inserer_queue(valeur)
 
     def defiler(self):
-        """ à faire """
-        pass
+        """Retire le premier objet de la file."""
+        self.file.supprimer_tete()
 
     def __str__(self):
-        pass
+        """Convertis la file en une chaîne de caractères."""
+        return self.file.__str__()
 
+    def __getitem__(self, index):
+        """Renvoie l'objet demandé par rapport à son index."""
+        return self.file.__getitem__(index)
 
 class File2:
     """ File implémentée sur la base d'une deque (file double) python """
