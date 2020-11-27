@@ -23,7 +23,7 @@ grande_liste, grande_l_attendue = grandes_listes()
         (grande_liste, grande_l_attendue),
 
     ])
-def test_tris(tab, attendu):
+def test_tous_tris_basile(tab, attendu):
     # doit tester que les différents algorithmes de tris tries effectivement
     # les tableaux qu'on leur soumet
     for i in range(len(liste_fonctions)):
