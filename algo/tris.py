@@ -9,7 +9,7 @@ def tri_selection(tab):
         tab[i], tab[k] = tab[k], tab[i]
     return tab
 
-def tri_insertion(tab):
+def tri_insertions(tab):
     for i in range(1, len(tab)):
         j = i
         k = tab[i]
