@@ -1,7 +1,17 @@
 from algo.struct.piles import Pile1, Pile2, Pile3
 
 def test_pile1():
-    assert False # à remplacer...
+    pile1 = Pile1()
+    pile1.empiler(4)
+    pile1.empiler(42)
+    pile1.empiler(22)
+    pile1.empiler(3)
+    pile1.empiler(666)
+    assert len(pile1) == 5
+    assert str(pile1) == "666 → 3 → 22 → 42 → 4"
+    pile1.depiler()
+    assert len(pile1) == 4
+    assert str(pile1) == "3 → 22 → 42 → 4"
 
 def test_pile2():
     pile2 = Pile2()
