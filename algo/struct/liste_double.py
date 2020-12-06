@@ -47,10 +47,27 @@ class ListeDbl:
     def _inserer(self, valeur, cellule=None):
         """insere valeur juste après la cellule précisée
         Si elle n'est pas précisé, l'insertion a lieue en tête."""
-        if tete is True:
-            self._tete = Cellule(valeur)
-        else:
-            self._queue = Cellule(valeur)
+        self._taille += 1
+        cell = Cellule(valeur)
+
+        # insertion en tête
+        if cellule is None:
+            cell._suivante = self._tete
+            self._tete = cell
+            # si la cellule est seule, elle est aussi la queue!
+            if self._tete._suivante is None:
+                self._queue = cell
+            return
+
+        # insertion queue
+        if cellule._suivante is None:
+            cellule._suivante = cell
+            self._queue = cell
+            return
+
+        # insertion ailleurs
+        cell._suivante = cellule._suivante
+        cellule._suivante = cell
 
 
     def _supprimer(self, cellule):
